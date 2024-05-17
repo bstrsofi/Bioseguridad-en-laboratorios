@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de Bioseguridad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            color: white;
+            padding: 100px 20px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s;
+        }
+
+        header .slideshow-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        header .prev {
+            left: 10px;
+        }
+
+        header .next {
+            right: 10px;
+        }
+
+        h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 60px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: black;
+            animation: moveBackground 10s linear infinite;
+            text-shadow: 0 0 5px rgb(250, 250, 250);
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        section {
+            margin: 15px 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            width: 100%;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #logo {
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        #indice-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            padding: 10px;
+            z-index: 1000;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #indice-btn:hover,
+        #indice-btn:focus {
+            background-color: #333;
+        }
+
+        #indice {
+            display: none;
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #000;
+            color: white;
+            padding: 10px;
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+            z-index: 999;
+            border-radius: 5px;
+        }
+
+        #indice ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #indice ul li {
+            margin-bottom: 10px;
+        }
+
+        #indice ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .lab-section {
+            margin-bottom: 30px;
+        }
+
+        .lab-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .lab-description {
+            margin-bottom: 20px;
+        }
+
+        .lab-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="title-images">
+            <img src="imagenes\indece3.jpg" alt="Imagen 1">
+            <img src="imagenes\imagen indice3.jpeg" alt="Imagen 3">
+
+            <img src="imagenes\imagen indice4.webp" alt="Imagen 4">
+
+        </div>
+        <div class="slideshow-control prev" onclick="changeSlide(-1)">❮</div>
+        <div class="slideshow-control next" onclick="changeSlide(1)">❯</div>
+        <h1>Tipos de Laboratorio y sus Normas de Bioseguridad</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#importancia-bioseguridad">Importancia de la Bioseguridad</a></li>
+            <li><a href="#tipos-laboratorios">Tipos de Laboratorios</a></li>
+            <li><a href="#medidas-bioseguridad">Medidas básicas de Bioseguridad</a></li>
+            <li><a href="#normas-bioseguridad">Normas de Bioseguridad en cada Laboratorio</a></li>
+            <!-- Agregamos este enlace -->
+        </ul>
+    </nav>
+    <div id="indice-btn" onclick="toggleIndice()">ÍNDICE</div> <!-- Corregimos "indece" a "ÍNDICE" -->
+    <section id="indice">
+        <h2>Índice</h2>
+        <ul>
+            <li><a href="#importancia-bioseguridad">Importancia de la Bioseguridad</a></li>
+            <li><a href="#tipos-laboratorios">Tipos de Laboratorios</a></li>
+            <li><a href="#medidas-bioseguridad">Medidas básicas de Bioseguridad</a></li>
+            <li><a href="#normas-bioseguridad">Normas de Bioseguridad en cada Laboratorio</a></li>
+            <!-- Agregamos este enlace -->
+        </ul>
+    </section>
+    <section id="importancia-bioseguridad">
+        <h2>Importancia de la Bioseguridad</h2>
+        <p>La bioseguridad en los laboratorios es fundamental para prevenir la exposición a agentes infecciosos o
+            biológicamente activos que pueden causar enfermedades en humanos, animales o plantas. Es esencial mantener
+            prácticas de seguridad estrictas para proteger al personal del laboratorio y al ambiente.</p>
+
+    </section>
+    <section id="tipos-laboratorios">
+        <h2>Tipos de Laboratorios</h2>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Química</h3>
+            <p class="lab-description">El laboratorio de química es un espacio dedicado a la realización de experimentos
+                y análisis químicos.</p>
+            <img class="lab-image" src="quimica.jpg" alt="Laboratorio de Química">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Biología</h3>
+            <p class="lab-description">El laboratorio de biología es un entorno controlado donde se realizan
+                experimentos y análisis relacionados con organismos vivos.</p>
+            <img class="lab-image" src="biologia.jpg" alt="Laboratorio de Biología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Física</h3>
+            <p class="lab-description">El laboratorio de física es un espacio equipado con instrumentos y herramientas
+                para llevar a cabo experimentos relacionados con las leyes y principios de la física.</p>
+            <img class="lab-image" src="fisica.jpg" alt="Laboratorio de Física">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Microbiología</h3>
+            <p class="lab-description">El laboratorio de microbiología es donde se estudian los microorganismos y sus
+                efectos.</p>
+            <img class="lab-image" src="microbiologia.jpg" alt="Laboratorio de Microbiología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Genética</h3>
+            <p class="lab-description">El laboratorio de genética se dedica al estudio de los genes, herencia y
+                variación en organismos.</p>
+            <img class="lab-image" src="genetica.jpg" alt="Laboratorio de Genética">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Investigación Clínica</h3>
+            <p class="lab-description">El laboratorio de investigación clínica se enfoca en la investigación de
+                enfermedades y tratamientos médicos.</p>
+            <img class="lab-image" src="investigacion_clinica.jpg" alt="Laboratorio de Investigación Clínica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Anatomía Patológica</h3>
+            <p class="lab-description">El laboratorio de anatomía patológica se encarga del estudio de las enfermedades
+                a nivel celular y tisular.</p>
+            <img class="lab-image" src="anatomia_patologica.jpg" alt="Laboratorio de Anatomía Patológica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Farmacología</h3>
+            <p class="lab-description">El laboratorio de farmacología investiga los efectos de los fármacos y
+                medicamentos.</p>
+            <img class="lab-image" src="farmacologia.jpg" alt="Laboratorio de Farmacología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Bioquímica</h3>
+            <p class="lab-description">El laboratorio de bioquímica estudia las reacciones químicas que ocurren en
+                organismos vivos.</p>
+            <img class="lab-image" src="bioquimica.jpg" alt="Laboratorio de Bioquímica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Ecología</h3>
+            <p class="lab-description">El laboratorio de ecología se dedica al estudio de las interacciones entre los
+                seres vivos y su entorno.</p>
+            <img class="lab-image" src="ecologia.jpg" alt="Laboratorio de Ecología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Zoología</h3>
+            <p class="lab-description">El laboratorio de zoología se enfoca en el estudio de los animales y su
+                comportamiento.</p>
+            <img class="lab-image" src="zoologia.jpg" alt="Laboratorio de Zoología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Botánica</h3>
+            <p class="lab-description">El laboratorio de botánica se dedica al estudio de las plantas y su morfología.
+            </p>
+            <img class="lab-image" src="botanica.jpg" alt="Laboratorio de Botánica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Patología Forense</h3>
+            <p class="lab-description">El laboratorio de patología forense investiga las causas de muertes y lesiones a
+                través de evidencias.</p>
+            <img class="lab-image" src="patologia_forense.jpg" alt="Laboratorio de Patología Forense">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Laboratorio de Neurociencia</h3>
+            <p class="lab-description">El laboratorio de neurociencia estudia el sistema nervioso y el cerebro.</p>
+            <img class="lab-image" src="neurociencia.jpg" alt="Laboratorio de Neurociencia">
+        </div>
+    </section>
+    <section id="medidas-bioseguridad">
+        <h2>Medidas básicas de Bioseguridad</h2>
+        <p><strong>Uso de Equipos de Protección Personal (EPP):</strong> Los Equipos de Protección Personal (EPP) son
+            dispositivos, prendas o accesorios diseñados para ser utilizados por el personal en el lugar de trabajo con
+            el fin de protegerse contra riesgos que puedan amenazar su salud o seguridad.</p>
+        <p><strong>Desinfección y esterilización de herramientas y superficies:</strong> La desinfección y
+            esterilización son procesos utilizados para eliminar o reducir la cantidad de microorganismos presentes en
+            superficies, instrumentos y equipo, con el fin de prevenir la transmisión de enfermedades infecciosas.</p>
+        <p><strong>Gestión adecuada de residuos biológicos:</strong> La gestión adecuada de residuos biológicos implica
+            la manipulación, almacenamiento, transporte, tratamiento y eliminación seguros de materiales biológicos,
+            como muestras de tejido, fluidos corporales y cultivos de microorganismos, para minimizar el riesgo de
+            exposición y la contaminación ambiental.</p>
+        <p><strong>Protocolos de actuación en caso de incidentes:</strong> Los protocolos de actuación en caso de
+            incidentes son procedimientos y directrices establecidos para guiar al personal en la respuesta rápida y
+            efectiva ante situaciones de emergencia o accidentes que puedan ocurrir en el laboratorio.</p>
+    </section>
+    </section>
+
+    <!-- Espacio para los títulos "Normas de Bioseguridad" -->
+    <section>
+        <h2>NORMAS DE BIOSEGURIDAD EN CADA LABORATORIO</h2>
+
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Química</h3>
+            <p class="lab-description">.</p>
+            <img class="lab-image" src="quimica.jpg" alt="Laboratorio de Química">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Biología</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="biologia.jpg" alt="Laboratorio de Biología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Física</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="fisica.jpg" alt="Laboratorio de Física">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Microbiología</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="microbiologia.jpg" alt="Laboratorio de Microbiología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Genética</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="genetica.jpg" alt="Laboratorio de Genética">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Investigación Clínica</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="investigacion_clinica.jpg" alt="Laboratorio de Investigación Clínica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Anatomía Patológica</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="anatomia_patologica.jpg" alt="Laboratorio de Anatomía Patológica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Farmacología</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="farmacologia.jpg" alt="Laboratorio de Farmacología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Bioquímica</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="bioquimica.jpg" alt="Laboratorio de Bioquímica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Ecología</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="ecologia.jpg" alt="Laboratorio de Ecología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Zoología</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="zoologia.jpg" alt="Laboratorio de Zoología">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Botánica</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="botanica.jpg" alt="Laboratorio de Botánica">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguriad en el Laboratorio de Patología Forense</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="patologia_forense.jpg" alt="Laboratorio de Patología Forense">
+        </div>
+        <div class="lab-section">
+            <h3 class="lab-title">Bioseguridad en el Laboratorio de Neurociencia</h3>
+            <p class="lab-description"></p>
+            <img class="lab-image" src="neurociencia.jpg" alt="Laboratorio de Neurociencia">
+    </section>
+    <footer>
+        <img src="imagenes\logo-universidad-de-la-amazonia.png-1.jpeg" alt="UNIVERSIDAD DE LA AMAZONIA" width="100"
+            height="100" id="logo">
+        <p>© 2024 Laboratorios y sus Normas de Bioseguridad. Toda la información plasmada fue recolectada en una
+            investigación previa.</p>
+        <p>Página web elaborada por Brenda Tejada y Nicolas Diaz</p>
+    </footer>
+
+    <script>
+        var currentSlide = 0;
+        var slides = document.querySelectorAll('header img');
+
+        function showSlide(n) {
+            slides[currentSlide].style.opacity = 0;
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].style.opacity = 1;
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlide + n);
+        }
+
+        setInterval(function () {
+            changeSlide(1);
+        }, 5000);
+
+        function toggleIndice() {
+            var indice = document.getElementById("indice");
+            if (indice.style.display === "none") {
+                indice.style.display = "block";
+            } else {
+                indice.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
